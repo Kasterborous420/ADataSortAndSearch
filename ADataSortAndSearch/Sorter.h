@@ -6,8 +6,8 @@ public:
 	~CSorter();
 
 	void bubbleSort(int list[]);
-	int selectionSort(int list[], int length);
-	int insertionSort(int list[], int length);
+	void selectionSort(int list[]);
+	void insertionSort(int list[]);
 
 };
 
