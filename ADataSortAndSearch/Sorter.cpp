@@ -10,6 +10,8 @@ CSorter::~CSorter()
 {
 }
 
+//======================BUBBLE SORT========================//
+
 void CSorter::bubbleSort(int list[])
 {
 	int length = sizeof(list) / sizeof(int);
@@ -28,7 +30,12 @@ void CSorter::bubbleSort(int list[])
 	}
 }
 
-int minLocation(int list[], int loc, int length)
+//=========================================================//
+
+
+//=====================SELECTION SORT======================//
+
+int CSorter::minLocation(int list[], int loc, int length)
 {
 	//Set Location
 	int tempLoc = -1;
@@ -56,7 +63,7 @@ int minLocation(int list[], int loc, int length)
 	return loc;
 }
 
-void swap(int list[], int loc, int minIndex)
+void CSorter::swap(int list[], int loc, int minIndex)
 {
 	int temp = 0;
 
@@ -79,4 +86,35 @@ void CSorter::selectionSort(int list[])
 		swap(list, loc, minIndex);
 	}
 }
+
+//=========================================================//
+
+
+//=====================INSERTION SORT======================//
+
+void insertionSort(int list[])
+{
+	int length = sizeof(list) / sizeof(int);
+
+	int loc, temp;
+
+	for (int firstOutOfOrder = 1; firstOutOfOrder < length; firstOutOfOrder++)
+	{
+		//check against previous adjacent element
+		if (list[firstOutOfOrder] < list[firstOutOfOrder - 1])
+		{
+			temp = list[firstOutOfOrder];
+			loc = firstOutOfOrder; //Init where to start moving back
+
+			while (loc > 0 && list[loc - 1] > temp)
+			{
+				list[loc] = list[loc -1];
+				loc--;
+			}
+			list[loc] = temp;
+		}
+	}
+}
+
+//=========================================================//
 
