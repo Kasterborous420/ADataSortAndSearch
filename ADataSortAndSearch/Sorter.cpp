@@ -30,7 +30,7 @@ void CSorter::bubbleSort(int list[])
 	}
 }
 
-//=========================================================//
+
 
 
 //=====================SELECTION SORT======================//
@@ -87,12 +87,12 @@ void CSorter::selectionSort(int list[])
 	}
 }
 
-//=========================================================//
+
 
 
 //=====================INSERTION SORT======================//
 
-void insertionSort(int list[])
+void CSorter::insertionSort(int list[])
 {
 	int length = sizeof(list) / sizeof(int);
 
@@ -116,5 +116,58 @@ void insertionSort(int list[])
 	}
 }
 
-//=========================================================//
+
+
+//=======================QUICK SORT========================//
+
+int CSorter::partition(int list[], int first, int last)
+{
+	int middle = (first + last) / 2;
+	swap(list, first, middle);
+
+	int pivot = list[first];
+	int smallIndex = first;
+
+	for (int i = first + 1; i <= last; i++)
+	{
+		if (list[i] < pivot)
+		{
+			smallIndex++;
+			swap(list, smallIndex, i);
+		}
+	}
+	swap(list, first, smallIndex);
+	
+	return smallIndex;
+}
+
+void CSorter::quickSort(int list[], int first, int last)
+{
+
+	if (first < last)
+	{
+		int pivotLocation = partition(list, first, last);
+
+		quickSort(list, first, pivotLocation - 1);
+		quickSort(list, pivotLocation + 1, last);
+	}
+}
+
+
+
+//=======================MERGE SORT========================//
+
+void CSorter::merge(int list[], int first, int middle, int last)
+{
+	int *temp = new int[middle - first + 1];
+
+	int i, j, k;
+	//i = index for *temp
+	//j = index for 2nd list
+	//k = index for combined list
+}
+
+
+
+
 
